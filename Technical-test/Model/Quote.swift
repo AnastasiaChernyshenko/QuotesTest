@@ -7,12 +7,26 @@
 
 import Foundation
 
-struct Quote {
-    var symbol:String?
-    var name:String?
-    var currency:String?
-    var readableLastChangePercent:String?
-    var last:String?
-    var variationColor:String?
-    var myMarket:Market?
+struct Quote: Codable {
+    var symbol: String?
+    var name: String?
+    var currency: String?
+    var readableLastChangePercent: String?
+    var last: String?
+    var variationColor: VariationColor?
+}
+
+class QuoteFavourite {
+    let quote: Quote?
+    var isFavourite: Bool
+    
+    init(quote: Quote?, isFavourite: Bool) {
+        self.quote = quote
+        self.isFavourite = isFavourite
+    }
+}
+
+enum VariationColor: String, Codable {
+    case red
+    case green
 }
